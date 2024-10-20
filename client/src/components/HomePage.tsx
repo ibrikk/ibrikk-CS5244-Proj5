@@ -29,17 +29,15 @@ import originOfSecies from "../assets/images/books/Darvin Origins.jpg";
 import bananasBeaches from "../assets/images/books//cyntia Enloe.jpg";
 import imaginedCommunities from "../assets/images/books/imagined communities.jpg";
 
+// No image
+import noImage from "../assets/images/books/no-image.jpg";
+
 interface HomePageProps {
-  mockData: CategoryMock[];
   categories: Category[];
   toggleSignIn: () => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({
-  mockData,
-  toggleSignIn,
-  categories,
-}) => {
+const HomePage: React.FC<HomePageProps> = ({ toggleSignIn, categories }) => {
   const [categoryOneBooks, setCategoryOneBooks] = useState<Book[]>([]);
   const [categoryTwoBooks, setCategoryTwoBooks] = useState<Book[]>([]);
 
@@ -63,12 +61,9 @@ const HomePage: React.FC<HomePageProps> = ({
         1012: imaginedCommunities,
       },
     };
-    books.map((book: Book) => {
-      console.log("imagemapcat", imageMap[categoryId]);
-    });
     return books.map((book: Book) => ({
       ...book,
-      picture: imageMap[categoryId][book.bookId] || "", // Fallback to default image
+      picture: imageMap[categoryId][book.bookId] || noImage, // Fallback to default image
     }));
   };
 
@@ -95,10 +90,6 @@ const HomePage: React.FC<HomePageProps> = ({
       })
       .catch(console.error);
   }, []);
-
-  console.log("categoryOneBooks", categoryOneBooks);
-  console.log("categoryTwoBooks", categoryTwoBooks);
-
   return (
     <>
       <HomeNavBar toggleSignIn={toggleSignIn} categories={categories} />

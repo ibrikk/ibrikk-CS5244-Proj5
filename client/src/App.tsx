@@ -36,11 +36,7 @@ const App = () => {
             <Route
               path="/"
               element={
-                <HomePage
-                  mockData={mockData}
-                  toggleSignIn={toggleSignIn}
-                  categories={categories}
-                />
+                <HomePage toggleSignIn={toggleSignIn} categories={categories} />
               }
             />
             {/* TODO: Make the Nav different than homepage */}
