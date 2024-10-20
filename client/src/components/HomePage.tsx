@@ -47,23 +47,21 @@ const HomePage: React.FC<HomePageProps> = ({
   const addLocalImagePaths = (books: Book[], categoryId: number) => {
     const imageMap: { [key: number]: { [key: number]: string } } = {
       1001: {
-        1001: img1984, // Map book id to image paths
+        1001: img1984,
         1002: imgAllTheDarkColors,
         1003: imgGreatGatsby,
         1004: imgTheHousemaid,
         1005: imgDaydream,
         1006: rmrCreatures,
-        // Add other mappings here
       },
       1002: {
-        1001: sapiens,
+        1007: sapiens,
         1008: animalFarm,
         1009: whyNationFail,
         1010: originOfSecies,
         1011: bananasBeaches,
         1012: imaginedCommunities,
       },
-      // Add mappings for other categories if needed
     };
     books.map((book: Book) => {
       console.log("imagemapcat", imageMap[categoryId]);
