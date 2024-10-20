@@ -30,14 +30,14 @@ const HomePage: React.FC<HomePageProps> = ({
       <Hero />
 
       <section className="grid grid-full">
-        <h3 className="homepage-category-name">{categories[0].name}</h3>
+        <h3 className="homepage-category-name">{categories[0]?.name}</h3>
         <div className="cards-container grid grid-full">
           {/* {mockData[0].books.map((book: Book) => (
             <Card key={book.id} book={book} isHomePage={true} />
           ))} */}
         </div>
 
-        <h3 className="homepage-category-name">{categories[1].name}</h3>
+        <h3 className="homepage-category-name">{categories[1]?.name}</h3>
         <div className="cards-container grid grid-full">
           {/* {mockData[1].books.map((book: Book) => (
             <Card key={book.id} book={book} isHomePage={true} />
