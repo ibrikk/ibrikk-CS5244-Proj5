@@ -55,6 +55,11 @@
 
 .select-options li:hover {
   background-color: #f0f0f0;
+  border-bottom-right-radius: 0; /* Regular items */
+}
+
+.select-options li:last-child:hover {
+  border-bottom-right-radius: 20px; /* Only last item */
 }
 
 .custom-select:hover .select-options {

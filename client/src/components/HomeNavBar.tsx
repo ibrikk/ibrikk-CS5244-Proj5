@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface DropdownCategory {
   value: string;
@@ -58,6 +58,8 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({ toggleSignIn }) => {
     { link: "/category/OnSale", name: "On Sale" },
   ];
 
+  const navigate = useNavigate();
+
   return (
     <nav className="grid grid-full">
       <div className="custom-select">
@@ -68,10 +70,14 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({ toggleSignIn }) => {
         </select>
         <div className="select-styled">Categories</div>
         <ul className="select-options">
-          {dropdownCategories.map((category) => (
-            <Link to={category.navigateTo}>
-              <li rel={category.value}>{category.name}</li>
-            </Link>
+          {dropdownCategories.map((category, index) => (
+            <li
+              key={index}
+              onClick={() => navigate(category.navigateTo)}
+              rel={category.value}
+            >
+              {category.name}
+            </li>
           ))}
         </ul>
       </div>

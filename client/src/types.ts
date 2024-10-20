@@ -88,13 +88,18 @@ export interface Book {
   isPublic: boolean;
 }
 
-export interface Category {
+export interface CategoryMock {
   id: number;
   category: string;
   books: Book[];
 }
 
-const mockData: Category[] = [
+export interface Category {
+  categoryId: number;
+  name: string;
+}
+
+const mockData: CategoryMock[] = [
   {
     id: 1001,
     category: "New Releases",

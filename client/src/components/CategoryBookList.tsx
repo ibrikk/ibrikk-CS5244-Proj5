@@ -4,10 +4,10 @@ import "../assets/css/global.css";
 import Card from "./Card";
 import CategoryNavBar from "./CategoryNavBar";
 import { useParams } from "react-router-dom";
-import { Book, Category } from "../types";
+import { Book, CategoryMock } from "../types";
 
 interface CategoryPageProps {
-  mockData: Category[];
+  mockData: CategoryMock[];
   toggleSignIn: () => void;
 }
 
@@ -37,7 +37,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
   const displayName = getDisplayName(categoryName || "");
 
   const category = mockData.filter(
-    (item: Category) => item.category === displayName
+    (item: CategoryMock) => item.category === displayName
   );
 
   return (
