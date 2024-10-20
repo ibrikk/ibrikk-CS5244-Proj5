@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Category } from "../types";
 
 interface DropdownCategory {
   value: string;
@@ -14,9 +15,13 @@ interface HomePageCategory {
 
 interface HomeNavBarProps {
   toggleSignIn: () => void;
+  categories: Category[];
 }
 
-const HomeNavBar: React.FC<HomeNavBarProps> = ({ toggleSignIn }) => {
+const HomeNavBar: React.FC<HomeNavBarProps> = ({
+  toggleSignIn,
+  categories,
+}) => {
   const dropdownCategories: DropdownCategory[] = [
     {
       value: "1",
@@ -64,17 +69,17 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({ toggleSignIn }) => {
     <nav className="grid grid-full">
       <div className="custom-select">
         <select>
-          {dropdownCategories.map((category) => (
-            <option value={category.value}>{category.name}</option>
+          {categories.map((category) => (
+            <option value={category?.categoryId}>{category?.name}</option>
           ))}
         </select>
         <div className="select-styled">Categories</div>
         <ul className="select-options">
-          {dropdownCategories.map((category, index) => (
+          {categories.map((category, index) => (
             <li
               key={index}
-              onClick={() => navigate(category.navigateTo)}
-              rel={category.value}
+              onClick={() => navigate(`/category/${category?.name}`)}
+              rel={category?.categoryId.toString()}
             >
               {category.name}
             </li>
