@@ -58,8 +58,14 @@
   border-bottom-right-radius: 0; /* Regular items */
 }
 
+.select-options li:first-child:hover {
+  border-top-right-radius: 20px; /* Only lfirst item */
+  border-top-left-radius: 20px; /* Only lfirst item */
+}
+
 .select-options li:last-child:hover {
   border-bottom-right-radius: 20px; /* Only last item */
+  border-bottom-left-radius: 20px; /* Only last item */
 }
 
 .custom-select:hover .select-options {

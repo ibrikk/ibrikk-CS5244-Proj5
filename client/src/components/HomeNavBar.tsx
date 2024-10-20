@@ -22,34 +22,6 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
   toggleSignIn,
   categories,
 }) => {
-  const dropdownCategories: DropdownCategory[] = [
-    {
-      value: "1",
-      name: "Fiction",
-      navigateTo: "/category/Fiction",
-    },
-    {
-      value: "2",
-      name: "Non-fiction",
-      navigateTo: "/category/Non-fiction",
-    },
-    {
-      value: "3",
-      name: "Science",
-      navigateTo: "/category/Science",
-    },
-    {
-      value: "4",
-      name: "History",
-      navigateTo: "/category/History",
-    },
-    {
-      value: "5",
-      name: "Biography",
-      navigateTo: "/category/Biography",
-    },
-  ];
-
   const homePageCategories: HomePageCategory[] = [
     {
       link: "/category/NewReleases",
@@ -64,13 +36,15 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
   ];
 
   const navigate = useNavigate();
-
+  console.log(categories);
   return (
     <nav className="grid grid-full">
       <div className="custom-select">
         <select>
-          {categories.map((category) => (
-            <option value={category?.categoryId}>{category?.name}</option>
+          {categories.map((category, index) => (
+            <option key={index} value={category?.categoryId}>
+              {category?.name}
+            </option>
           ))}
         </select>
         <div className="select-styled">Categories</div>

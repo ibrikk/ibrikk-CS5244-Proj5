@@ -22,7 +22,6 @@ const HomePage: React.FC<HomePageProps> = ({
   toggleSignIn,
   categories,
 }) => {
-  console.log(categories);
   return (
     <>
       <HomeNavBar toggleSignIn={toggleSignIn} categories={categories} />
