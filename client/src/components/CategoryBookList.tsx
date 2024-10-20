@@ -4,15 +4,20 @@ import "../assets/css/global.css";
 import Card from "./Card";
 import CategoryNavBar from "./CategoryNavBar";
 import { useParams } from "react-router-dom";
-import { Book, BookMock, CategoryMock } from "../types";
+import { Book, BookMock, Category, CategoryMock } from "../types";
 
-interface CategoryPageProps {
+interface CategoryPagePropsMock {
   mockData: CategoryMock[];
   toggleSignIn: () => void;
 }
 
+interface CategoryPageProps {
+  categories: Category[];
+  toggleSignIn: () => void;
+}
+
 const CategoryPage: React.FC<CategoryPageProps> = ({
-  mockData,
+  categories,
   toggleSignIn,
 }) => {
   const { categoryName } = useParams<{ categoryName: string }>();
@@ -34,10 +39,12 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
     return categoryMap[categoryPath] || categoryPath;
   };
 
+  console.log("categories", categories);
+
   const displayName = getDisplayName(categoryName || "");
 
-  const category = mockData.filter(
-    (item: CategoryMock) => item.category === displayName
+  const category = categories.filter(
+    (item: Category) => item?.name === displayName
   );
 
   return (
@@ -50,9 +57,9 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
       ) : (
         <div className="grid grid-full">
           <div className="cards-container grid grid-full">
-            {category[0].books.map((book: BookMock) => (
+            {/* {category[0].books.map((book: BookMock) => (
               <Card key={book.id} book={book} isHomePage={false} />
-            ))}
+            ))} */}
           </div>
         </div>
       )}

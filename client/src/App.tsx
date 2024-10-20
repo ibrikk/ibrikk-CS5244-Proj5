@@ -43,7 +43,10 @@ const App = () => {
             <Route
               path="/category/:categoryName"
               element={
-                <CategoryPage mockData={mockData} toggleSignIn={toggleSignIn} />
+                <CategoryPage
+                  toggleSignIn={toggleSignIn}
+                  categories={categories}
+                />
               }
             />
           </Routes>

@@ -5,11 +5,6 @@ import "../assets/css/CategoryBookList.css";
 import "../assets/css/Home.css";
 import "../assets/css/global.css";
 
-interface CardPropsMock {
-  isHomePage: boolean;
-  book: BookMock;
-}
-
 interface CardProps {
   isHomePage: boolean;
   book: any; // Book
