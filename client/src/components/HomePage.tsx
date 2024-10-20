@@ -26,7 +26,7 @@ const HomePage: React.FC<HomePageProps> = ({
     <>
       <HomeNavBar toggleSignIn={toggleSignIn} categories={categories} />
 
-      <Hero />
+      <Hero firstCategory={categories[0]?.name} />
 
       <section className="grid grid-full">
         <h3 className="homepage-category-name">{categories[0]?.name}</h3>
