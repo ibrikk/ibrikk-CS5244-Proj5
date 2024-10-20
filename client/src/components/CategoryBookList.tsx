@@ -22,6 +22,8 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
 }) => {
   const { categoryName } = useParams<{ categoryName: string }>();
 
+  console.log("categoryName", categoryName);
+
   const getDisplayName = (categoryPath: string) => {
     const categoryMap: { [key: string]: string } = {
       NewReleases: "New Releases",
