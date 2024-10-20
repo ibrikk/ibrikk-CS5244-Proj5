@@ -1,21 +1,37 @@
 import React from "react";
 import { View } from "lucide-react";
-import { Book } from "../types";
+import { Book, BookMock } from "../types";
 import "../assets/css/CategoryBookList.css";
 import "../assets/css/Home.css";
 import "../assets/css/global.css";
 
+interface CardPropsMock {
+  isHomePage: boolean;
+  book: BookMock;
+}
+
 interface CardProps {
   isHomePage: boolean;
-  book: Book;
+  book: any; // Book
 }
 
 const Card: React.FC<CardProps> = ({ book, isHomePage }) => {
-  const { title, author, price, picture, pictureDescription, isPublic } = book;
+  const {
+    bookId,
+    categoryId,
+    title,
+    author,
+    description,
+    isFeatured,
+    isPublic,
+    price,
+    rating,
+    picture,
+  } = book;
   return (
     <div className="card">
       <div className="book-image-read-btn-container">
-        <img src={picture} className="book-image" alt={pictureDescription} />
+        <img src={picture} className="book-image" alt={description} />
         {isPublic && (
           <button className="view-btn">
             <View className="view-icon" />

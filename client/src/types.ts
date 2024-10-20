@@ -78,7 +78,7 @@ import diyFanzines from "./assets/images/books/fanzinesDiy.jpg";
 import diyForHomeRepair from "./assets/images/books/DiyhomeBuild.jpg";
 import diyStringArt from "./assets/images/books/diyStringArt.jpg";
 
-export interface Book {
+export interface BookMock {
   id: number;
   title: string;
   author: string;
@@ -88,10 +88,22 @@ export interface Book {
   isPublic: boolean;
 }
 
+export interface Book {
+  bookId: number;
+  categoryId: number;
+  title: string;
+  author: string;
+  description: string;
+  isFeatured: boolean;
+  isPublic: boolean;
+  price: number;
+  rating: number;
+  picture: string;
+}
 export interface CategoryMock {
   id: number;
   category: string;
-  books: Book[];
+  books: BookMock[];
 }
 
 export interface Category {

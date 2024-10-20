@@ -4,7 +4,7 @@ import "../assets/css/global.css";
 import Card from "./Card";
 import CategoryNavBar from "./CategoryNavBar";
 import { useParams } from "react-router-dom";
-import { Book, CategoryMock } from "../types";
+import { Book, BookMock, CategoryMock } from "../types";
 
 interface CategoryPageProps {
   mockData: CategoryMock[];
@@ -50,7 +50,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
       ) : (
         <div className="grid grid-full">
           <div className="cards-container grid grid-full">
-            {category[0].books.map((book: Book) => (
+            {category[0].books.map((book: BookMock) => (
               <Card key={book.id} book={book} isHomePage={false} />
             ))}
           </div>

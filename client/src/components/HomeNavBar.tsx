@@ -36,7 +36,6 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
   ];
 
   const navigate = useNavigate();
-  console.log(categories);
   return (
     <nav className="grid grid-full">
       <div className="custom-select">
