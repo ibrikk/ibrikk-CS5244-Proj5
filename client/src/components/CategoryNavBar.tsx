@@ -2,26 +2,17 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "../assets/css/CategoryBookList.css";
 import "../assets/css/global.css";
-
-interface CategoryPageCategory {
-  id: number;
-  name: string;
-}
+import { Category } from "../types";
 
 interface CategoryNavBarProps {
+  otherCategories: Category[];
   toggleSignIn: () => void;
 }
 
-const CategoryNavBar: React.FC<CategoryNavBarProps> = ({ toggleSignIn }) => {
-  const categoryPageCategories: CategoryPageCategory[] = [
-    { id: 1, name: "Fiction" },
-    { id: 2, name: "Business" },
-    { id: 3, name: "Romance" },
-    { id: 4, name: "Travel" },
-    { id: 5, name: "Cooking" },
-    { id: 6, name: "Action & Adventure" },
-    { id: 7, name: "DIY" },
-  ];
+const CategoryNavBar: React.FC<CategoryNavBarProps> = ({
+  otherCategories,
+  toggleSignIn,
+}) => {
   const { categoryName } = useParams();
 
   const isActive = (category: string) => categoryName === category;
@@ -35,9 +26,9 @@ const CategoryNavBar: React.FC<CategoryNavBarProps> = ({ toggleSignIn }) => {
         <span className="material-symbols-outlined search-icon">search</span>
       </div>
       <div className="homepage-categories" onClick={toggleSignIn}>
-        {categoryPageCategories.map((category) => (
+        {otherCategories.map((category) => (
           <Link
-            key={category.id}
+            key={category.categoryId}
             to={`/category/${category.name}`}
             className={
               isActive(category.name) ? "selected-category" : "category-link"

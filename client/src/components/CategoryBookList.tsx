@@ -6,11 +6,6 @@ import CategoryNavBar from "./CategoryNavBar";
 import { useParams } from "react-router-dom";
 import { Book, BookMock, Category, CategoryMock } from "../types";
 
-interface CategoryPagePropsMock {
-  mockData: CategoryMock[];
-  toggleSignIn: () => void;
-}
-
 interface CategoryPageProps {
   categories: Category[];
   toggleSignIn: () => void;
@@ -51,7 +46,10 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
 
   return (
     <>
-      <CategoryNavBar toggleSignIn={toggleSignIn} />
+      <CategoryNavBar
+        otherCategories={categories.slice(2)}
+        toggleSignIn={toggleSignIn}
+      />
       {category.length === 0 ? (
         <div className="not-found">
           <p>No books found for this category.</p>
