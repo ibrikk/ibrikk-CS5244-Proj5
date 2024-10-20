@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../assets/css/CategoryBookList.css";
 import "../assets/css/global.css";
 import Card from "./Card";
 import CategoryNavBar from "./CategoryNavBar";
 import { useParams } from "react-router-dom";
 import { Book, BookMock, Category, CategoryMock } from "../types";
+import axios from "axios";
 
 interface CategoryPageProps {
   categories: Category[];
@@ -17,7 +18,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
 }) => {
   const { categoryName } = useParams<{ categoryName: string }>();
 
-  console.log("categoryName", categoryName);
+  console.log("useParam categoryName", categoryName);
 
   const getDisplayName = (categoryPath: string) => {
     const categoryMap: { [key: string]: string } = {
@@ -43,6 +44,17 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
   const category = categories.filter(
     (item: Category) => item?.name === displayName
   );
+
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:8080/IbrahimBookstoreReactFetch/api/categories/name/${displayName}/books`
+      )
+      .then((result) => {
+        console.log("result", result.data);
+      })
+      .catch(console.error);
+  }, [category]);
 
   return (
     <>
