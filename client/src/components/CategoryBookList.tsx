@@ -8,6 +8,41 @@ import { Book, BookMock, Category, CategoryMock } from "../types";
 import axios from "axios";
 import Spinner from "./Spinner";
 
+/* Static images */
+// New Releases
+import img1984 from "../assets/images/books/1984.jpg";
+import imgAllTheDarkColors from "../assets/images/books/all_the_dark_colors.jpg";
+import imgGreatGatsby from "../assets/images/books/great-gratsby.jpg";
+import imgTheHousemaid from "../assets/images/books/the_housemaid.jpg";
+import imgDaydream from "../assets/images/books/daydream.jpg";
+import rmrCreatures from "../assets/images/books/remarkably.jpg";
+
+// For You
+import sapiens from "../assets/images/books//sapiens.jpg";
+import animalFarm from "../assets/images/books/Animal Farm.jpg";
+import whyNationFail from "../assets/images/books/daron acemoglu.jpg";
+import originOfSecies from "../assets/images/books/Darvin Origins.jpg";
+import bananasBeaches from "../assets/images/books//cyntia Enloe.jpg";
+import imaginedCommunities from "../assets/images/books/imagined communities.jpg";
+
+// Best Sellers
+import taytay from "../assets/images/books/taylor_swift.jpg";
+import welcome from "../assets/images/books/welcome_to_the_club.jpg";
+import dancing from "../assets/images/books/dancing_with_cats.jpg";
+import ablaze from "../assets/images/books//ablaze.jpg";
+
+// Trending
+import melania from "../assets/images/books/Melania.jpg";
+import whatIAteInOneYear from "../assets/images/books/what_i_ate_in_one_year.jpg";
+import bornInACrime from "../assets/images/books/born_a_crime.jpg";
+import onWriting from "../assets/images/books/on_writing.jpg";
+
+// On Sale
+import romeo from "../assets/images/books/romeo_juliet.jpg";
+import hamlet from "../assets/images/books/hamlet.jpg";
+import harryPotter from "../assets/images/books//harry_potter.jpg";
+import yellowStone from "../assets/images/books/yellowstone.jpg";
+
 // Fiction
 import courtOfMistAndRuin from "../assets/images/books//Court of mis.jpg";
 import assassinsBlade from "../assets/images/books/Assassins blade.jpg";
@@ -93,6 +128,40 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
   // Function to add picture paths to each book
   const addLocalImagePaths = (books: Book[], categoryName: string) => {
     const imageMap: { [key: string]: { [key: number]: string } } = {
+      "New Releases": {
+        1001: img1984,
+        1002: imgAllTheDarkColors,
+        1003: imgGreatGatsby,
+        1004: imgTheHousemaid,
+        1005: imgDaydream,
+        1006: rmrCreatures,
+      },
+      "For You": {
+        1007: sapiens,
+        1008: animalFarm,
+        1009: whyNationFail,
+        1010: originOfSecies,
+        1011: bananasBeaches,
+        1012: imaginedCommunities,
+      },
+      "Best Sellers": {
+        1013: taytay,
+        1014: welcome,
+        1015: dancing,
+        1016: ablaze,
+      },
+      Trending: {
+        1017: melania,
+        1018: whatIAteInOneYear,
+        1019: bornInACrime,
+        1020: onWriting,
+      },
+      "On Sale": {
+        1021: romeo,
+        1022: hamlet,
+        1023: harryPotter,
+        1024: yellowStone,
+      },
       Fiction: {
         1025: courtOfMistAndRuin,
         1026: assassinsBlade,
@@ -164,8 +233,6 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
       picture: imageMap[categoryName]?.[book.bookId] || noImage, // Fallback to default image
     }));
   };
-
-  console.log("useParam categoryName", categoryName);
 
   useEffect(() => {
     setLoading(true);
