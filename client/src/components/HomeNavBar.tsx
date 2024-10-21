@@ -17,8 +17,8 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
       <div className="custom-select">
         <select>
           {categories.map((category, index) => (
-            <option key={index} value={category?.categoryId}>
-              {category?.name}
+            <option key={index} value={category.categoryId}>
+              {category.name}
             </option>
           ))}
         </select>
@@ -27,8 +27,8 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
           {categories.map((category, index) => (
             <li
               key={index}
-              onClick={() => navigate(`/category/${category?.name}`)}
-              rel={category?.categoryId.toString()}
+              onClick={() => navigate(`/category/${category.name}`)}
+              rel={category.categoryId.toString()}
             >
               {category.name}
             </li>
@@ -42,8 +42,12 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
         <span className="material-symbols-outlined search-icon">search</span>
       </div>
       <div className="homepage-categories" onClick={toggleSignIn}>
-        {categories.slice(0, 5).map((category) => (
-          <Link to={`/category/${category.name}`} className="category-link">
+        {categories.slice(0, 5).map((category, idx) => (
+          <Link
+            key={idx}
+            to={`/category/${category.name}`}
+            className="category-link"
+          >
             {category.name}
           </Link>
         ))}

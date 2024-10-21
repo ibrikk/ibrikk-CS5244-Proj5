@@ -97,20 +97,20 @@ const HomePage: React.FC<HomePageProps> = ({ toggleSignIn, categories }) => {
     <>
       <HomeNavBar toggleSignIn={toggleSignIn} categories={categories} />
 
-      <Hero firstCategory={categories[0]?.name} />
+      <Hero firstCategory={categories[0].name} />
 
       {loading ? (
         <Spinner />
       ) : (
         <section className="grid grid-full">
-          <h3 className="homepage-category-name">{categories[0]?.name}</h3>
+          <h3 className="homepage-category-name">{categories[0].name}</h3>
           <div className="cards-container grid grid-full">
             {categoryOneBooks.map((book: Book) => (
               <Card key={book.bookId} book={book} isHomePage={true} />
             ))}
           </div>
 
-          <h3 className="homepage-category-name">{categories[1]?.name}</h3>
+          <h3 className="homepage-category-name">{categories[1].name}</h3>
           <div className="cards-container grid grid-full">
             {categoryTwoBooks.map((book: Book) => (
               <Card key={book.bookId} book={book} isHomePage={true} />

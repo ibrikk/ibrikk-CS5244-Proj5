@@ -230,7 +230,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
 
     return books.map((book: Book) => ({
       ...book,
-      picture: imageMap[categoryName]?.[book.bookId] || noImage, // Fallback to default image
+      picture: imageMap[categoryName][book.bookId] || noImage, // Fallback to default image
     }));
   };
 
