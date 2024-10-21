@@ -2,17 +2,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Category } from "../types";
 
-interface DropdownCategory {
-  value: string;
-  name: string;
-  navigateTo: string;
-}
-
-interface HomePageCategory {
-  link: string;
-  name: string;
-}
-
 interface HomeNavBarProps {
   toggleSignIn: () => void;
   categories: Category[];
@@ -22,19 +11,6 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
   toggleSignIn,
   categories,
 }) => {
-  const homePageCategories: HomePageCategory[] = [
-    {
-      link: "/category/New%20Releases",
-      name: "New Releases",
-    },
-    {
-      link: "/category/Best%20Sellers",
-      name: "Best Sellers",
-    },
-    { link: "/category/Trending", name: "Trending" },
-    { link: "/category/On%20Sale", name: "On Sale" },
-  ];
-
   const navigate = useNavigate();
   return (
     <nav className="grid grid-full">
@@ -66,8 +42,8 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
         <span className="material-symbols-outlined search-icon">search</span>
       </div>
       <div className="homepage-categories" onClick={toggleSignIn}>
-        {homePageCategories.map((category) => (
-          <Link to={category.link} className="category-link">
+        {categories.slice(0, 5).map((category) => (
+          <Link to={`/category/${category.name}`} className="category-link">
             {category.name}
           </Link>
         ))}
