@@ -12,16 +12,16 @@ const Footer = () => {
       </Link>
       <p>©2024  Ibo.ok inc. All Rights Reserved</p>
       <section className="social-media-icons">
-        <Link to="/">
+        <Link to="https://www.gmail.com" target="_blank">
           <Mail />
         </Link>
-        <Link to="/">
+        <Link to="https://www.google.com/maps" target="_blank">
           <MapPin />
         </Link>
-        <Link to="/">
+        <Link to="https://www.fb.com" target="_blank">
           <Facebook />
         </Link>
-        <Link to="/" className="x-twitter-icon">
+        <Link to="https://www.x.com" target="_blank" className="x-twitter-icon">
           <i className="fa-brands fa-x-twitter"></i>
         </Link>
       </section>
