@@ -7,7 +7,7 @@ import "../assets/css/global.css";
 
 interface CardProps {
   isHomePage: boolean;
-  book: any; // Book
+  book: Book;
 }
 
 const Card: React.FC<CardProps> = ({ book, isHomePage }) => {
