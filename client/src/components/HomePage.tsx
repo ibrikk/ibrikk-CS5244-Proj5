@@ -71,11 +71,11 @@ const HomePage: React.FC<HomePageProps> = ({ toggleSignIn, categories }) => {
   useEffect(() => {
     // Fetch category one books
     const fetchCategoryOneBooks = axios.get(
-      "http://localhost:8080/IbrahimBookstoreReactFetch/api/categories/1001/books"
+      "http://webdev.cs.vt.edu:8080//IbrahimBookstoreReactFetch/api/categories/1001/books"
     );
     // Fetch category two books
     const fetchCategoryTwoBooks = axios.get(
-      "http://localhost:8080/IbrahimBookstoreReactFetch/api/categories/1002/books"
+      "http://webdev.cs.vt.edu:8080//IbrahimBookstoreReactFetch/api/categories/1002/books"
     );
 
     Promise.all([fetchCategoryOneBooks, fetchCategoryTwoBooks])
