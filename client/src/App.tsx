@@ -27,7 +27,7 @@ const App = () => {
   }, []);
 
   return (
-    <Router basename="IbrahimBookstoreReactFetch">
+    <Router basename="/IbrahimBookstoreReactFetch">
       <div className="app-container">
         {/* TODO: Add a functionality to the button to change on toggle to the profile pic and vice versa */}
         <Header isSignedIn={isSignedIn} />
