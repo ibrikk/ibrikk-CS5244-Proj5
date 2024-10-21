@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import Hero from "./Hero";
 import HomeNavBar from "./HomeNavBar";
 import Card from "./Card";
-import { Book, Category, CategoryMock } from "../types";
-
+import { Book, Category } from "../types";
 import "../assets/css/global.css";
 import "../assets/css/Home.css";
 import "../assets/css/CategoryBookList.css";
@@ -11,6 +10,7 @@ import "../assets/css/CategoryBookListItem.css";
 import "../assets/css/CategoryNav.css";
 import "../assets/css/HeaderDropdown.css";
 import axios from "axios";
+import Spinner from "./Spinner"; // Import the Spinner component
 
 /* Static images */
 // New Releases
@@ -40,6 +40,7 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ toggleSignIn, categories }) => {
   const [categoryOneBooks, setCategoryOneBooks] = useState<Book[]>([]);
   const [categoryTwoBooks, setCategoryTwoBooks] = useState<Book[]>([]);
+  const [loading, setLoading] = useState<boolean>(true); // Loading state
 
   // Function to add picture paths to each book
   const addLocalImagePaths = (books: Book[], categoryId: number) => {
@@ -68,49 +69,55 @@ const HomePage: React.FC<HomePageProps> = ({ toggleSignIn, categories }) => {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        "http://localhost:8080/IbrahimBookstoreReactFetch/api/categories/1001/books"
-      )
-      .then((result) => {
-        const booksWithImages = addLocalImagePaths(result.data, 1001);
-        setCategoryOneBooks(booksWithImages);
+    // Fetch category one books
+    const fetchCategoryOneBooks = axios.get(
+      "http://localhost:8080/IbrahimBookstoreReactFetch/api/categories/1001/books"
+    );
+    // Fetch category two books
+    const fetchCategoryTwoBooks = axios.get(
+      "http://localhost:8080/IbrahimBookstoreReactFetch/api/categories/1002/books"
+    );
+
+    Promise.all([fetchCategoryOneBooks, fetchCategoryTwoBooks])
+      .then(([result1, result2]) => {
+        const booksWithImages1 = addLocalImagePaths(result1.data, 1001);
+        const booksWithImages2 = addLocalImagePaths(result2.data, 1002);
+
+        setCategoryOneBooks(booksWithImages1);
+        setCategoryTwoBooks(booksWithImages2);
+        setLoading(false);
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
   }, []);
 
-  useEffect(() => {
-    axios
-      .get(
-        "http://localhost:8080/IbrahimBookstoreReactFetch/api/categories/1002/books"
-      )
-      .then((result) => {
-        const booksWithImages = addLocalImagePaths(result.data, 1002);
-        setCategoryTwoBooks(booksWithImages);
-      })
-      .catch(console.error);
-  }, []);
   return (
     <>
       <HomeNavBar toggleSignIn={toggleSignIn} categories={categories} />
 
       <Hero firstCategory={categories[0]?.name} />
 
-      <section className="grid grid-full">
-        <h3 className="homepage-category-name">{categories[0]?.name}</h3>
-        <div className="cards-container grid grid-full">
-          {categoryOneBooks.map((book: Book) => (
-            <Card key={book.bookId} book={book} isHomePage={true} />
-          ))}
-        </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <section className="grid grid-full">
+          <h3 className="homepage-category-name">{categories[0]?.name}</h3>
+          <div className="cards-container grid grid-full">
+            {categoryOneBooks.map((book: Book) => (
+              <Card key={book.bookId} book={book} isHomePage={true} />
+            ))}
+          </div>
 
-        <h3 className="homepage-category-name">{categories[1]?.name}</h3>
-        <div className="cards-container grid grid-full">
-          {categoryTwoBooks.map((book: Book) => (
-            <Card key={book.bookId} book={book} isHomePage={true} />
-          ))}
-        </div>
-      </section>
+          <h3 className="homepage-category-name">{categories[1]?.name}</h3>
+          <div className="cards-container grid grid-full">
+            {categoryTwoBooks.map((book: Book) => (
+              <Card key={book.bookId} book={book} isHomePage={true} />
+            ))}
+          </div>
+        </section>
+      )}
     </>
   );
 };
