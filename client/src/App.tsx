@@ -39,7 +39,6 @@ const App = () => {
                 <HomePage toggleSignIn={toggleSignIn} categories={categories} />
               }
             />
-            {/* TODO: Make the Nav different than homepage */}
             <Route
               path="/category/:categoryName"
               element={
