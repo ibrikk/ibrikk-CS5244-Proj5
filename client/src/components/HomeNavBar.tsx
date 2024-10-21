@@ -24,7 +24,7 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
 }) => {
   const homePageCategories: HomePageCategory[] = [
     {
-      link: "/category/NewReleases",
+      link: "/category/New%20Releases",
       name: "New Releases",
     },
     {

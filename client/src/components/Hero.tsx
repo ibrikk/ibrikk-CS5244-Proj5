@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = ({ firstCategory }) => {
           <h1>Discover pages of unknown stories and wisdom.</h1>
         </div>
         <Link
-          to={`/category/${firstCategory}`.replace(" ", "")}
+          to={`/category/${firstCategory}`.replace(" ", "%20")}
           className="hero-button"
         >
           <ShoppingBag className="pr-5" />
