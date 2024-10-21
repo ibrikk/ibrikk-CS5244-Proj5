@@ -28,11 +28,11 @@ const HomeNavBar: React.FC<HomeNavBarProps> = ({
       name: "New Releases",
     },
     {
-      link: "/category/BestSellers",
+      link: "/category/Best%20Sellers",
       name: "Best Sellers",
     },
     { link: "/category/Trending", name: "Trending" },
-    { link: "/category/OnSale", name: "On Sale" },
+    { link: "/category/On%20Sale", name: "On Sale" },
   ];
 
   const navigate = useNavigate();
